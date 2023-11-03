@@ -53,7 +53,7 @@ export default function SignupPage() {
                 </div>
                 <button className="h-10 w-40 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold"
                 onClick={onSignup}>Signup here</button>
-                <p className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1">click here to login</p>
+                <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1" href="/login">click here to login</a>
             </div>
         </div>
     )

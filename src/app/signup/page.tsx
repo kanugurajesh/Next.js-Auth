@@ -1,25 +1,70 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
+
+// creating a user interface
+interface User {
+    username: string;
+    email: string;
+    password: string;
+}
 
 export default function SignupPage() {
 
-    const [user, setUser] = useState({
+    const router = useRouter();
+
+    const [user, setUser] = useState<User>({
+        username: "",
         email: "",
-        password: "",
-        username: ""
-    })
+        password: ""
+    });
+
+    const [loading, setloading] = useState(false);
+
+    const [buttonDisabled, setButtonDisabled] = useState(false);
 
     const [showEye, setShowEye] = useState(false);
 
     const onSignup = async () => {
-        
+
+        try {
+            setloading(true);
+            // send the data to the server
+            const response = await fetch("/api/users/signup/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(user)
+            });
+            
+            // give the success message using toast
+            toast.success("Account created successfully");
+            // redirect to login page
+            router.push("/login");
+        } catch (error:any) {
+            // give the error message using toast
+            toast.error(error.message);
+        } finally {
+            setloading(false);
+        }
     }
+
+    useEffect(() => {
+        if(user.email && user.password && user.username) {
+            setButtonDisabled(false);
+        } else {
+            setButtonDisabled(true);
+        }
+    },[user])
 
     return (
         <div className="flex flex-col justify-center h-screen items-center">
             <div className="flex flex-col gap-3 justify-center items-center">
+                <Toaster />
                 <h1 className="text-2xl font-bold">Register your account</h1>
                 <label htmlFor="username"></label>
                 <input
@@ -52,7 +97,7 @@ export default function SignupPage() {
                         <Image src={showEye ? "/view.png" : "/hide.png"} alt="" width={23} height={23} className="absolute right-3 top-2" onClick={()=>setShowEye(!showEye)}/>
                 </div>
                 <button className="h-10 w-40 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold"
-                onClick={onSignup}>Signup here</button>
+                onClick={onSignup}>{buttonDisabled ? "Fill details" : "Sign Up"}</button>
                 <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1" href="/login">click here to login</a>
             </div>
         </div>

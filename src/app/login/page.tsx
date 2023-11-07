@@ -1,24 +1,83 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { toast, Toaster } from "react-hot-toast";
+
+// creating a user interface
+interface User {
+    email : string,
+    password : string
+}
 
 export default function SignupPage() {
 
-    const [user, setUser] = useState({
+    // using the router hook
+    const router = useRouter();
+
+    // creating a user state
+    const [user, setUser] = useState<User>({
         email: "",
-        password: "",
+        password: ""
     })
 
+    // creating a button disabled state
+    const [buttonDisabled, setButtonDisabled] = useState(false);
+
+    // creating a loading state
+    const [loading, setLoading] = useState(false);
+
+    // creating a show eye state
     const [showEye, setShowEye] = useState(false);
 
-    const onSignup = async () => {
-        
+    // creating a on login function
+    const onLogin = async () => {
+        try {
+            setLoading(true);
+            // making a post request to the server
+            const response = await fetch("/api/users/login/",{
+                "method": "POST",
+                "headers" : {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify(user)
+            })
+            
+            // getting the data from the response
+            const data = await response.json();
+
+            // checking if the user is logged in or not
+            if(data.success) {
+                toast.success("Logged in successfully");
+                setTimeout(() => {
+                    router.push("/profile");
+                }, 900);
+            } else {
+                toast.error("Logged in failed");
+            }
+
+            setLoading(false);
+
+        } catch (error) {
+            console.log(error);
+        }
     }
+
+    // using the use effect hook
+
+    useEffect(() => {
+        if(user.email && user.password) {
+            setButtonDisabled(false);
+        } else {
+            setButtonDisabled(true);
+        }
+    }, [user])
 
     return (
         <div className="flex flex-col justify-center h-screen items-center">
             <div className="flex flex-col gap-3 justify-center items-center">
+                <Toaster />
                 <h1 className="text-2xl font-bold">Login</h1>
                 <label htmlFor="email"></label>
                 <input 
@@ -42,7 +101,7 @@ export default function SignupPage() {
                         <Image src={showEye ? "/view.png" : "/hide.png"} alt="" width={23} height={23} className="absolute right-3 top-2" onClick={()=>setShowEye(!showEye)}/>
                 </div>
                 <button className="h-10 w-40 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold"
-                onClick={onSignup}>Login</button>
+                onClick={onLogin}>Login</button>
                 <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1" href="/signup">click here to register</a>
             </div>
         </div>

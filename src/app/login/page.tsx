@@ -65,7 +65,6 @@ export default function SignupPage() {
     }
 
     // using the use effect hook
-
     useEffect(() => {
         if(user.email && user.password) {
             setButtonDisabled(false);

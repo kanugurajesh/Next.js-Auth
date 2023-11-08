@@ -6,9 +6,11 @@ import { toast, Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 export default function Profile() {
+    
     const router = useRouter();
     const [data, setData] = useState("nothing");
 
+    // creating a logout function to send a request to the logout functionality in the backend
     const logout = async () => {
         try {
             const response = await fetch("/api/users/logout", {

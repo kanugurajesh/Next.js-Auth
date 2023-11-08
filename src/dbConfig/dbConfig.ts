@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 export async function connect() {
     // using try and catch to handle the mongodb connection
     try {
+        
         // connecting to monogdb database using the environment variable
         mongoose.connect(process.env.MONGO_URI!)
         // storing the state of the connection in a connection variable to perform some operations on it

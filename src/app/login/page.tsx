@@ -99,7 +99,7 @@ export default function SignupPage() {
                 <button className="h-10 w-40 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold"
                 onClick={onLogin}>Login</button>
                 <div className="flex gap-5">
-                    <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1 font-medium" href="/verifyemail">forget password</a>
+                    <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1 font-medium" href="/forgetpassword">forget password</a>
                     <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1 font-medium" href="/signup">register now</a>
                 </div>
             </div>

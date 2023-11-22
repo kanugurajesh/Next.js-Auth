@@ -7,6 +7,7 @@ connect();
 export async function GET(request: NextRequest) {
 
     try {
+        
         // parsing the request body into json
         const reqBody = await request.json();
         // getting the token from the request body

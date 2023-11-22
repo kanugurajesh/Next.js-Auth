@@ -30,7 +30,6 @@ export default function VerifyEmailPage() {
             } else {
                 setError(true)
             }
-            
         } catch (error:any) {
             setError(true)
         }

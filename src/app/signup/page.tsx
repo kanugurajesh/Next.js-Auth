@@ -52,7 +52,6 @@ export default function SignupPage() {
                 toast.error(data.error);
             }
         }
-        catch (error:any) {
             // give the error message using toast
             toast.error(error.message);
         }

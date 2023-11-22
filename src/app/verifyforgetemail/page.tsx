@@ -32,7 +32,6 @@ export default function VerifyEmailPage() {
 
         } catch (error:any) {
             setError(true)
-            console.log(error.response.data);
         }
     }
 
@@ -43,10 +42,8 @@ export default function VerifyEmailPage() {
     }, [])
 
     useEffect(() => {
-        if(token) {
-            if(token.length > 0) {
-                verifyForgetEmail();
-            }
+        if(token?.length) {
+            verifyForgetEmail();
         }
     }, [token])
 

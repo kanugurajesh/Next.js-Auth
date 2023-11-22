@@ -10,6 +10,7 @@ export default function VerifyEmailPage() {
     const [error, setError] = useState<boolean>(false);
 
     const verifyUserEmail = async () => {
+        
         try {
             // sending a request to the verify-email api endpoint to verify the user
             const response = await fetch(`/api/users/verifyemail/${token}`, {

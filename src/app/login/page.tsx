@@ -46,7 +46,6 @@ export default function SignupPage() {
             
             // getting the data from the response
             const data = await response.json();
-
             // checking if the user is logged in or not
             if(data.success) {
                 toast.success("Logged in successfully");
@@ -54,7 +53,7 @@ export default function SignupPage() {
                     router.push("/profile");
                 }, 900);
             } else {
-                toast.error("Logged in failed");
+                toast.error(data.error);
             }
             setLoading(false);
         } catch (error) {

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
+import { set } from "mongoose";
 
 // creating a user interface
 interface User {
@@ -41,20 +42,27 @@ export default function SignupPage() {
                 body: JSON.stringify(user)
             });
             
-            if(response.ok) {
+            const data = await response.json();
+
+            if(data.success) {
                 // give the success message using toast
-                toast.success("Account created successfully");
+                toast.success(data.message);
                 // redirect to login page
-                router.push("/login");
+                setTimeout(() => {
+                    router.push("/login");
+                }, 900);
+            } else {
+                // give the error message using toast
+                toast.error(data.error);
             }
-        } catch (error:any) {
+        }
+        catch (error:any) {
             // give the error message using toast
             toast.error(error.message);
         } finally {
             setloading(false);
         }
     }
-
     useEffect(() => {
         if(user.email && user.password && user.username) {
             setButtonDisabled(false);

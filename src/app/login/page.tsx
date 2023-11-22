@@ -56,8 +56,8 @@ export default function SignupPage() {
                 toast.error(data.error);
             }
             setLoading(false);
-        } catch (error) {
-            console.log(error);
+        } catch (error:any) {
+            toast.error(error.error)
         }
     }
 

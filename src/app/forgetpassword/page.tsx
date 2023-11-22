@@ -1,7 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect } from 'react'
 import toast, {Toaster} from 'react-hot-toast';
 
 export default function ForgetPassword() {
@@ -16,11 +15,11 @@ export default function ForgetPassword() {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(email)
+                body: JSON.stringify({email:email})
             });
 
             const data = await response.json()
-
+            
             if(data.success) {
                 toast.success(data.message)
                 setEmailStatus(true)
@@ -48,11 +47,11 @@ export default function ForgetPassword() {
                             placeholder="email"
                             className="h-10 w-60 border-2 border-black rounded-md px-3"
                             />
-                        <button className="h-10 w-40 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold"
+                        <button className="h-10 w-40 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold" onClick={sendForgetEmail}
                         >verify email</button>
                     </>
                 ) : (
-                    <button className="h-10 w-60 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold" onClick={sendForgetEmail}
+                    <button className="h-10 w-60 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold"
                     >verification email sent</button>
                 )}
             </div>

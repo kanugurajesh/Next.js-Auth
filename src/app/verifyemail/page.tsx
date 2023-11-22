@@ -25,13 +25,12 @@ export default function VerifyEmailPage() {
           
             const data = await response.json();
 
-            console.log(data);
-
             if (data.success) {
                 setVerified(true)
             } else {
                 setError(true)
             }
+            
         } catch (error:any) {
             setError(true)
         }

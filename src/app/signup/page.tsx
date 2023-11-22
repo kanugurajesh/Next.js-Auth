@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
-import { set } from "mongoose";
 
 // creating a user interface
 interface User {

@@ -23,8 +23,6 @@ export default function SignupPage() {
         password: ""
     });
 
-    const [loading, setloading] = useState(false);
-
     const [buttonDisabled, setButtonDisabled] = useState(false);
 
     const [showEye, setShowEye] = useState(false);
@@ -32,7 +30,6 @@ export default function SignupPage() {
     const onSignup = async () => {
 
         try {
-            setloading(true);
             // send the data to the server
             const response = await fetch("/api/users/signup/", {
                 method: "POST",
@@ -59,8 +56,6 @@ export default function SignupPage() {
         catch (error:any) {
             // give the error message using toast
             toast.error(error.message);
-        } finally {
-            setloading(false);
         }
     }
     useEffect(() => {

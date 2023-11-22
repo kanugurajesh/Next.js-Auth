@@ -2,13 +2,39 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import toast, {Toaster} from 'react-hot-toast';
 
 export default function ForgetPassword() {
-    const [email, setEmail] = useState("");
-    const [emailStatus, setEmailStatus] = useState(true);
+
+    const [email, setEmail] = useState<string>("");
+    const [emailStatus, setEmailStatus] = useState<boolean>(false);
+
+    const sendForgetEmail = async () => {
+        try {
+            const response = await fetch("/api/users/forgetpassword/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(email)
+            });
+
+            const data = await response.json()
+
+            if(data.success) {
+                toast.success(data.message)
+                setEmailStatus(true)
+            } else {
+                toast.error(data.error)
+            }
+        } catch(error:any) {
+            toast.error(error.message)
+        }
+    }
 
     return (
         <div className="flex flex-col justify-center h-screen items-center">
+            <Toaster />
             <div className="flex flex-col gap-3 justify-center items-center">
                 {!emailStatus ? (
                     <>
@@ -26,7 +52,7 @@ export default function ForgetPassword() {
                         >verify email</button>
                     </>
                 ) : (
-                    <button className="h-10 w-60 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold"
+                    <button className="h-10 w-60 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold" onClick={sendForgetEmail}
                     >verification email sent</button>
                 )}
             </div>

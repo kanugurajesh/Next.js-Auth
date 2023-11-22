@@ -20,7 +20,7 @@ export async function POST(request:NextRequest) {
 
         // returning a response
         return NextResponse.json({
-            message: "User created successfully",
+            message: "Email sent successfully",
             success: true
         })
         

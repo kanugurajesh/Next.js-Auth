@@ -12,14 +12,6 @@ export default function VerifyEmailPage() {
     const verifyUserEmail = async () => {
 
         try {
-            // sending a request to the verify-email api endpoint to verify the user
-            // const response = await fetch(`/api/users/verifyemail`, {
-            //     method: "GET",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            // });
-
             // send a post request to the verify-email api endpoint to verify the user
             const response = await fetch(`/api/users/verifyemail`, {
                 method: "POST",
@@ -52,10 +44,8 @@ export default function VerifyEmailPage() {
     }, [])
 
     useEffect(() => {
-        if (token) {
-            if (token.length > 0) {
-                verifyUserEmail();
-            }
+        if (token?.length > 0) {
+            verifyUserEmail();
         }
     }, [token])
 

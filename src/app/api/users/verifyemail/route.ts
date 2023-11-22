@@ -17,7 +17,6 @@ export async function POST(request: NextRequest) {
         if(!token) return NextResponse.json({error: 'No token found'},{status: 400});
         // find the user with the token and the token expiry is greater than the current time
         const user = await User.findOne({verifyToken: token,verifyTokenExpiry: {$gt: Date.now()}})
-        console.log(user)
         // if no user is found return status 400 with a message
         if (!user) return NextResponse.json({error: 'Invalid token'},{status: 400});
 

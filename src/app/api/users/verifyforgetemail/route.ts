@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
         if (!user) return NextResponse.json({error: 'Invalid token'},{status: 400});
 
         // update the user password and remove the token and token expiry
-        await User.updateOne({forgotPasswordToken: token,forgotPasswordTokenExpiry: {$gt: Date.now()}},{$set: {password: password,forgotPasswordToken: undefined,forgotPasswordTokenExpiry: undefined}})
+        await User.updateOne({forgotPasswordToken: token,forgotPasswordTokenExpiry: {$gt: Date.now()}},{$set: {password: password,forgotPasswordToken: undefined,forgotPasswordTokenExpiry: undefined,isVerified: true}})
 
         // return status 200 with a message
         return NextResponse.json({

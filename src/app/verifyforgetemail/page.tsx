@@ -12,8 +12,6 @@ export default function VerifyEmailPage() {
     const [token, setToken] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [password2, setPassword2] = useState<string>("");
-    const [verified, setVerified] = useState<boolean>(false);
-    const [error, setError] = useState<boolean>(false);
     const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
     const [showEye, setShowEye] = useState<boolean>(false);
     const [showEye2, setShowEye2] = useState<boolean>(false);
@@ -44,13 +42,14 @@ export default function VerifyEmailPage() {
             const data = await response.json();
 
             if (data.success) {
-                setVerified(true)
+                toast.success(data.message);
+                router.push("/login");
             } else {
-                setError(true)
+                toast.error(data.message);
             }
             
         } catch (error:any) {
-            setError(true)
+            toast.error(error.message);
         }
     }
 

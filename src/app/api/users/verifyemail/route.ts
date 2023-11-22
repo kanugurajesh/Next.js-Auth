@@ -21,15 +21,9 @@ export async function POST(request: NextRequest) {
         // if no user is found return status 400 with a message
         if (!user) return NextResponse.json({error: 'Invalid token'},{status: 400});
 
-        // set the verified to true
-        user.verified = true;
-        // set the verifyToken to undefined
-        user.verifyToken = undefined;
-        // set the verifyTokenExpiry to undefined
-        user.verifyTokenExpiry = undefined;
-        // save the user
-        await user.save();
-        // return status 200 with a message
+        // update the user with the token and the token expiry is greater than the current time
+        await User.updateOne({verifyToken: token,verifyTokenExpiry: {$gt: Date.now()}},{$set: {isVerified: true,verifyToken: undefined,verifyTokenExpiry: undefined}})
+
         return NextResponse.json({
                 message: "Email verified successfully",
                 success: true

@@ -18,13 +18,14 @@ export default function VerifyEmailPage() {
                     "Content-Type": "application/json",
                 },
             });
-
+          
             const data = await response.json();
 
             if (data.success) {
                 setVerified(true)
             }
             
+            setVerified(true)
         } catch (error:any) {
             setError(true)
             console.log(error.response.data);

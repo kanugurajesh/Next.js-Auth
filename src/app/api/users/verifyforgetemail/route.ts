@@ -30,6 +30,7 @@ export async function GET(request: NextRequest) {
                 message: "Forget email verified successfully",
                 success: true
             })
+            
     } catch (error:any) {
         // if any error occurs return status 500 with a message
         return NextResponse.json({error: error.message},{status: 500})

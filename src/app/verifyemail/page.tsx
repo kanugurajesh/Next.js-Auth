@@ -10,26 +10,38 @@ export default function VerifyEmailPage() {
     const [error, setError] = useState<boolean>(false);
 
     const verifyUserEmail = async () => {
-        
+
         try {
             // sending a request to the verify-email api endpoint to verify the user
-            const response = await fetch(`/api/users/verifyemail/${token}`, {
-                method: "GET",
+            // const response = await fetch(`/api/users/verifyemail`, {
+            //     method: "GET",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //     },
+            // });
+
+            // send a post request to the verify-email api endpoint to verify the user
+            const response = await fetch(`/api/users/verifyemail`, {
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
+                body: JSON.stringify({
+                    token: token
+                })
             });
           
             const data = await response.json();
 
+            console.log(data);
+
             if (data.success) {
                 setVerified(true)
+            } else {
+                setError(true)
             }
-            
-            setVerified(true)
         } catch (error:any) {
             setError(true)
-            console.log(error.response.data);
         }
     }
 
@@ -40,8 +52,10 @@ export default function VerifyEmailPage() {
     }, [])
 
     useEffect(() => {
-        if(token?.length > 0) {
-            verifyUserEmail();
+        if (token) {
+            if (token.length > 0) {
+                verifyUserEmail();
+            }
         }
     }, [token])
 

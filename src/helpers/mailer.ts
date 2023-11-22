@@ -18,7 +18,7 @@ export const sendEmail = async ({email, emailType, userId}: EmailOptions) => {
         // checking the email type
         if (emailType === "VERIFY") {
             // updating the user with the verify token
-            await User.findByIdAndUpdate(userId, {verifyToken: hashedToken,verifyExpiry: Date.now() + 3600000});
+            await User.findByIdAndUpdate(userId, {verifyToken: hashedToken,verifyTokenExpiry: Date.now() + 3600000});
         } else if (emailType === "RESET") {
             // updating the user with the forgot password token
             await User.findByIdAndUpdate(userId,

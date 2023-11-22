@@ -59,7 +59,6 @@ export default function Profile() {
             >
                 Get User Details
             </button>
-
         </div>
     )
 }

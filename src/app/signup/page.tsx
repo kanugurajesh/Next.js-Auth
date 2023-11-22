@@ -41,10 +41,12 @@ export default function SignupPage() {
                 body: JSON.stringify(user)
             });
             
-            // give the success message using toast
-            toast.success("Account created successfully");
-            // redirect to login page
-            router.push("/login");
+            if(response.ok) {
+                // give the success message using toast
+                toast.success("Account created successfully");
+                // redirect to login page
+                router.push("/login");
+            }
         } catch (error:any) {
             // give the error message using toast
             toast.error(error.message);

@@ -56,9 +56,7 @@ export default function SignupPage() {
             } else {
                 toast.error("Logged in failed");
             }
-
             setLoading(false);
-
         } catch (error) {
             console.log(error);
         }
@@ -101,7 +99,10 @@ export default function SignupPage() {
                 </div>
                 <button className="h-10 w-40 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold"
                 onClick={onLogin}>Login</button>
-                <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1" href="/signup">click here to register</a>
+                <div className="flex gap-5">
+                    <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1 font-medium" href="/verifyemail">forget password</a>
+                    <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1 font-medium" href="/signup">register now</a>
+                </div>
             </div>
         </div>
     )

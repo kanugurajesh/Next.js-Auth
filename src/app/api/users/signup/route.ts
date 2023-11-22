@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
 
         // if the user exists, return an error
         if(user) {
-            return NextResponse.json({error: "User already exists"},{status: 400});
+            return NextResponse.json({error: "User already exists", success:false},{status: 400});
         }
 
         // salting and hashing the password

@@ -12,13 +12,19 @@ export default function VerifyEmailPage() {
     const verifyUserEmail = async () => {
         try {
             // sending a request to the verify-email api endpoint to verify the user
-            await fetch(`/api/users/verify-email/${token}`, {
+            const response = await fetch(`/api/users/verifyemail/${token}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
             });
-            setVerified(true)
+
+            const data = await response.json();
+
+            if (data.success) {
+                setVerified(true)
+            }
+            
         } catch (error:any) {
             setError(true)
             console.log(error.response.data);
@@ -32,7 +38,7 @@ export default function VerifyEmailPage() {
     }, [])
 
     useEffect(() => {
-        if(token.length > 0) {
+        if(token?.length > 0) {
             verifyUserEmail();
         }
     }, [token])
@@ -53,7 +59,6 @@ export default function VerifyEmailPage() {
             {error && (
                 <div>
                     <h2 className='text-2xl'>Email not verified</h2>
-
                 </div>
             )}
         </div>

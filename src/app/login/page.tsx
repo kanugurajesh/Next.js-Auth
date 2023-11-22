@@ -46,7 +46,6 @@ export default function SignupPage() {
             
             // getting the data from the response
             const data = await response.json();
-
             // checking if the user is logged in or not
             if(data.success) {
                 toast.success("Logged in successfully");
@@ -54,11 +53,11 @@ export default function SignupPage() {
                     router.push("/profile");
                 }, 900);
             } else {
-                toast.error("Logged in failed");
+                toast.error(data.error);
             }
             setLoading(false);
-        } catch (error) {
-            console.log(error);
+        } catch (error:any) {
+            toast.error(error.error)
         }
     }
 
@@ -100,7 +99,7 @@ export default function SignupPage() {
                 <button className="h-10 w-40 border-2 border-black rounded-md bg-blue-500 hover:bg-blue-700 my-4 font-bold"
                 onClick={onLogin}>Login</button>
                 <div className="flex gap-5">
-                    <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1 font-medium" href="/verifyemail">forget password</a>
+                    <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1 font-medium" href="/forgetpassword">forget password</a>
                     <a className="text-blue-500 border-b-2 border-transparent hover:border-b-2 hover:border-blue-500 py-1 font-medium" href="/signup">register now</a>
                 </div>
             </div>

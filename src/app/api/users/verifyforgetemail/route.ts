@@ -1,6 +1,7 @@
 import { connect } from "@/dbConfig/dbConfig";
 import { NextResponse, NextRequest } from "next/server";
 import User from "@/models/userModel";
+import bcryptjs from "bcryptjs";
 
 connect();
 
@@ -24,8 +25,12 @@ export async function POST(request: NextRequest) {
         // if no user is found return status 400 with a message
         if (!user) return NextResponse.json({error: 'Invalid token'},{status: 400});
 
+        // salting and hashing the password
+        const salt = await bcryptjs.genSalt(10);
+        const hashedPassword = await bcryptjs.hash(password,salt)
+
         // update the user password and remove the token and token expiry
-        await User.updateOne({forgotPasswordToken: token,forgotPasswordTokenExpiry: {$gt: Date.now()}},{$set: {password: password,forgotPasswordToken: undefined,forgotPasswordTokenExpiry: undefined,isVerified: true}})
+        await User.updateOne({forgotPasswordToken: token,forgotPasswordTokenExpiry: {$gt: Date.now()}},{$set: {password: hashedPassword,forgotPasswordToken: undefined,forgotPasswordTokenExpiry: undefined,isVerified: true}})
 
         // return status 200 with a message
         return NextResponse.json({

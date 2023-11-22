@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 // Create a default get rotue the logs the user out
 export async function GET() {

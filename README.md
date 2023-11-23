@@ -44,3 +44,36 @@ To tackle the above issue I have developed this project which aims to provide se
     4. go to http://localhost:3000 and start using the application
     5. go to http://localhost:8001 to open mongodb admin
 ```
+
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://rajeshportfolio.me/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rajesh-kanugu-aba8a3254/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/exploringengin1)
+
+## Tech Stack
+
+- Kotlin
+- XML
+- Android Studio
+- Tensorflow
+- Tensorflow-lite
+
+## Contributing
+
+I want to add more features and Contributions are always welcome!
+
+See [contributing.md](https://github.com/rajesh604/Image-Classification/blob/main/contributing.md) for ways to get started.
+
+Please adhere to this project's [code of conduct](https://github.com/rajesh604/Image-Classification/blob/main/code_of_conduct.md).
+
+## Authors
+
+- [@rajesh604](https://github.com/rajesh604)
+
+## Support
+
+For support, you can buy me a coffee
+
+<a href="https://www.buymeacoffee.com/kanugurajen" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/rajesh604/Image-Classification/blob/main/LICENSE.txt)

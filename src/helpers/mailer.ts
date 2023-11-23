@@ -25,7 +25,7 @@ export const sendEmail = async ({email, emailType, userId}: EmailOptions) => {
             {forgotPasswordToken: hashedToken, forgotPasswordTokenExpiry: Date.now() + 3600000});
         }
 
-        // creating a transporter
+        // creating a transporter using mailtrap for testing or production but you need a domain for production
         const transport = nodemailer.createTransport({
             host: "sandbox.smtp.mailtrap.io",
             port: 2525,
@@ -37,9 +37,10 @@ export const sendEmail = async ({email, emailType, userId}: EmailOptions) => {
 
         // setting up mailoptions
         const mailOptions = {
-            from: "darkhorse@gmail.com",
+            from: process.env.SENDER_EMAIL,
             to: email,
             subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password",
+            // you can add designed html template here instead of the default below one
             html: `<p> Click <a href="${process.env.DOMAIN}${emailType === "VERIFY" ? "/verifyemail?token=" : "/verifyforgetemail?token="}${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"} or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/verifyemail?token=${hashedToken}</p>`
         };        
 

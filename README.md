@@ -52,11 +52,11 @@ To tackle the above issue I have developed this project which aims to provide se
 
 ## Tech Stack
 
-- Kotlin
-- XML
-- Android Studio
-- Tensorflow
-- Tensorflow-lite
+- Next.js
+- Mongodb
+- Tailwindcss
+- Typescript
+- Docker
 
 ## Contributing
 

@@ -51,18 +51,18 @@ export default function SignupPage() {
                 // give the error message using toast
                 toast.error(data.error);
             }
+        } catch (error:any) {
+            toast.error(error.message)
         }
-            // give the error message using toast
-            toast.error(error.message);
-        }
+        useEffect(() => {
+            if(user.email && user.password && user.username) {
+                setButtonDisabled(false);
+            } else {
+                setButtonDisabled(true);
+            }
+        },[user])
     }
-    useEffect(() => {
-        if(user.email && user.password && user.username) {
-            setButtonDisabled(false);
-        } else {
-            setButtonDisabled(true);
-        }
-    },[user])
+
 
     return (
         <div className="flex flex-col justify-center h-screen items-center">

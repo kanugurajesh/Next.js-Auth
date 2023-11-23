@@ -65,6 +65,7 @@ export default function SignupPage() {
         }
     },[user])
 
+
     return (
         <div className="flex flex-col justify-center h-screen items-center">
             <div className="flex flex-col gap-3 justify-center items-center">

@@ -51,11 +51,12 @@ export default function SignupPage() {
                 // give the error message using toast
                 toast.error(data.error);
             }
-        }
+        } catch (error:any) {
             // give the error message using toast
             toast.error(error.message);
         }
     }
+    
     useEffect(() => {
         if(user.email && user.password && user.username) {
             setButtonDisabled(false);

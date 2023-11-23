@@ -62,9 +62,9 @@ To tackle the above issue I have developed this project which aims to provide se
 
 I want to add more features and Contributions are always welcome!
 
-See [contributing.md](https://github.com/rajesh604/Image-Classification/blob/main/contributing.md) for ways to get started.
+See [contributing.md](https://github.com/kanugurajesh/Next.js-Auth/blob/main/contributing.md) for ways to get started.
 
-Please adhere to this project's [code of conduct](https://github.com/rajesh604/Image-Classification/blob/main/code_of_conduct.md).
+Please adhere to this project's [code of conduct](https://github.com/kanugurajesh/Next.js-Auth/blob/main/code_of_conduct.md).
 
 ## Authors
 

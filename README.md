@@ -7,9 +7,40 @@ We generally come across many third party authentication services but the proble
 ## Solution Statement
 To tackle the above issue I have developed this project which aims to provide secure, scalable and reliable authentication system at zero or minimum cost based on scaling. I have used the core platforms to reduce costs and increase performance as much as possible. you can use this project as template and build your products on top of it. I would love to take open source contributions to improve the product and help my peers to build the future tech
 
-## installation steps
+## Installation steps
+```bash
+    1.  Clone the repository to your local machine
+```
+
+### Prerequisites
+
+#### Local Setup
 
 ```bash
-    1. npm install
-    2. npm run dev
+    1. npm
+    2. node
+```
+
+#### Docker Setup
+
+```bash
+    1. Docker
+```
+
+### Local Installation
+
+```bash
+    1. cd Next.js-Auth
+    2. npm install
+    3. npm run dev
+    4. go to http://localhost:3000 and start using the application
+```
+
+### Docker Installation
+```bash
+    1. cd Next.js-Auth
+    2. docker-compose up
+    3. Wait for some time
+    4. go to http://localhost:3000 and start using the application
+    5. go to http://localhost:8001 to open mongodb admin
 ```

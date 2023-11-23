@@ -1,4 +1,4 @@
-# Creating an authentication template using next-js
+# Scalable and reliable authentication using next.js + Mongodb
 
 ## installation steps
 

@@ -56,6 +56,7 @@ export default function SignupPage() {
         }
     }
     
+    // useEffect to check if the user has filled all the details
     useEffect(() => {
         if(user.email && user.password && user.username) {
             setButtonDisabled(false);
@@ -63,7 +64,6 @@ export default function SignupPage() {
             setButtonDisabled(true);
         }
     },[user])
-
 
     return (
         <div className="flex flex-col justify-center h-screen items-center">

@@ -52,8 +52,7 @@ export default function SignupPage() {
                 toast.error(data.error);
             }
         } catch (error:any) {
-            // give the error message using toast
-            toast.error(error.message);
+            toast.error(error.message)
         }
     }
     
@@ -64,6 +63,7 @@ export default function SignupPage() {
             setButtonDisabled(true);
         }
     },[user])
+
 
     return (
         <div className="flex flex-col justify-center h-screen items-center">

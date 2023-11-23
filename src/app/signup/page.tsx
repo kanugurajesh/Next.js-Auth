@@ -54,14 +54,15 @@ export default function SignupPage() {
         } catch (error:any) {
             toast.error(error.message)
         }
-        useEffect(() => {
-            if(user.email && user.password && user.username) {
-                setButtonDisabled(false);
-            } else {
-                setButtonDisabled(true);
-            }
-        },[user])
     }
+    
+    useEffect(() => {
+        if(user.email && user.password && user.username) {
+            setButtonDisabled(false);
+        } else {
+            setButtonDisabled(true);
+        }
+    },[user])
 
 
     return (

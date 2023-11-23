@@ -1,4 +1,4 @@
-# Scalable and reliable authentication using next.js + Mongodb
+# Scalable and reliable authentication using Next.js + Mongodb
 
 ## installation steps
 
